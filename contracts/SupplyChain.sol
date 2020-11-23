@@ -132,6 +132,7 @@ contract SupplyChain {
   is the seller. Change the state of the item to shipped. Remember to call the event associated with this function!*/
   function shipItem(uint sku)  public sold(sku) verifyCaller(items[sku].seller)  {
       items[sku].state = State.Shipped;
+      //emit LogShipped
       emit LogShipped(sku);
       
   }
@@ -140,6 +141,7 @@ contract SupplyChain {
   is the buyer. Change the state of the item to received. Remember to call the event associated with this function!*/
   function receiveItem(uint sku) public shipped(sku) verifyCaller(items[sku].buyer) {
       items[sku].state = State.Recieved;
+      //emit LogReceived
       emit LogReceived(sku);   
     }
 
